@@ -1,0 +1,13 @@
+/home/ruan/Documentos/Dev/Projects/armly/soldier/target/release/deps/quote-71ee8fc0f5972305.rmeta: /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/lib.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/ext.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/format.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/ident_fragment.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/to_tokens.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/runtime.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/spanned.rs
+
+/home/ruan/Documentos/Dev/Projects/armly/soldier/target/release/deps/libquote-71ee8fc0f5972305.rlib: /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/lib.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/ext.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/format.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/ident_fragment.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/to_tokens.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/runtime.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/spanned.rs
+
+/home/ruan/Documentos/Dev/Projects/armly/soldier/target/release/deps/quote-71ee8fc0f5972305.d: /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/lib.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/ext.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/format.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/ident_fragment.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/to_tokens.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/runtime.rs /home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/spanned.rs
+
+/home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/lib.rs:
+/home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/ext.rs:
+/home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/format.rs:
+/home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/ident_fragment.rs:
+/home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/to_tokens.rs:
+/home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/runtime.rs:
+/home/ruan/.cargo/registry/src/github.com-1ecc6299db9ec823/quote-1.0.8/src/spanned.rs:
