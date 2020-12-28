@@ -1,6 +1,6 @@
 CommanderConfig(
-  name: "Cpt. Stive Rogers",
-  addr: "192.168.192.15:14114",
+  name: "Cpt. Steven Rogers",
+  addr: "localhost:14114",
   commands: 
   [
     Command (

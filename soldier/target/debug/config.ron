@@ -1,5 +1,0 @@
-SoldierConfig (
-  name: "S. Buck",
-  addr: "localhost:14114",
-  interval: 5
-)
