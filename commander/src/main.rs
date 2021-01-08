@@ -31,7 +31,7 @@ fn main() -> Result<(), Box<dyn Error>> {
           walkietalkie::walkietalkie::Commander::send_orders(&mut tcp_stream, commands_from_thread.clone());
           info!("Recieving reports...");
           let reports = walkietalkie::walkietalkie::Commander::receive_reports(&tcp_stream);
-          info!("Sending reports throught the channel...");
+          info!("Sending reports through the channel...");
           commander_channel_send.send(reports).unwrap();
           info!("Desconnecting from a client..");
           tcp_stream.shutdown(Shutdown::Both).unwrap();

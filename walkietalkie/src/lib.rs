@@ -49,7 +49,7 @@ pub mod walkietalkie {
           Ok(report)
         },
         Err(error) => {
-          eprint!("Error in converting Report from bytes");
+          error!("Could not convert from bytes to Report");
           Err(error)
         }
       }
@@ -60,7 +60,7 @@ pub mod walkietalkie {
           Ok(bytes)
         },
         Err(error) => {
-          eprint!("Error in converting Report to bytes");
+          error!("Could not convert from Report to bytes");
           Err(error)
         }
       }
@@ -73,7 +73,7 @@ pub mod walkietalkie {
           Ok(reports)
         },
         Err(error) => {
-          error!("Error in converting Vec<Report> from bytes");
+          error!("Could not convert from bytes to Vec<Report>");
           Err(error)
         }
       }
@@ -86,7 +86,7 @@ pub mod walkietalkie {
           Ok(bytes)
         },
         Err(error) => {
-          error!("Error in converting Vec<Report> to bytes");
+          error!("Could not convert from Vec<Report> to bytes");
           Err(error)
         }
       }
@@ -109,7 +109,7 @@ pub mod walkietalkie {
           Ok(command)
         },
         Err(error) => {
-          error!("Error in converting Command from bytes");
+          error!("Could not convering from bytes to Command");
           Err(error)
         }
       }
@@ -120,7 +120,7 @@ pub mod walkietalkie {
           Ok(bytes)
         },
         Err(error) => {
-          error!("Error in converting Command to bytes");
+          error!("Could not convering from Command to bytes");
           Err(error)
         }
       }
@@ -133,7 +133,7 @@ pub mod walkietalkie {
           Ok(commands)
         },
         Err(error) => {
-          error!("Error in converting bytes to Vec<Command>");
+          error!("Could not convert from bytes to Vec<Command>");
           Err(error)
         }
       }
@@ -147,7 +147,7 @@ pub mod walkietalkie {
           Ok(bytes)
         },
         Err(error) => {
-          eprint!("Error in converting Vec<Command> to bytes");
+          error!("Could not convert from Vec<Command> to bytes");
           Err(error)
         }
       }
@@ -185,7 +185,7 @@ pub mod walkietalkie {
           }
         },
         Err(e) => {
-          return Err("ERROR".to_string());
+          return Err(format!("{}", e));
         } 
       }
     }
@@ -248,7 +248,7 @@ pub mod walkietalkie {
       let buf_order = if let Ok(buf) = Command::from_vec_to_bytes(orders) {
         buf
       } else {
-        error!("Could not convert Commands to bytes");
+        error!("Could not convert from Commands to bytes");
         Commander::desconnect(&tcp_stream);
         process::exit(1);
       };
@@ -265,7 +265,7 @@ pub mod walkietalkie {
       let reports = if let Ok(reports) = Report::from_bytes_to_vec(buf_reports.to_vec()) {
         reports
       } else {
-        error!("Could not convert bytes to Commands");
+        error!("Could not convert from bytes to Commands");
         Commander::desconnect(tcp_stream);
         process::exit(1);
       };
