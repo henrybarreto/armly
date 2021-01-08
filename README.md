@@ -1,5 +1,3 @@
-> This has been writing for #christmashackathon from Hashnode.
-
 ## What is it?
 
 Armly is a combination of a Soldiers (Clients) and Commanders(Server). Each Commander has a list of Commands, which it sends to its Soldiers, what it can have many simultaneously. The Soldiers follow to the Commander's commands orders and, when all orders have been run, it waits a time interval and ask again to the Commander for new on ones.
@@ -68,12 +66,9 @@ cd commander/
 cargo r
 ```
 
-The soldier has a detail. As it is a daemon, it needs special permissions to run, so...
-
 ```bash
-cd soldier/target/debug/
-cargo b
-sudo ./soldier
+cd soldier
+cargo r 
 ```
 
 That is it, It was the first thing I built used Rust, so tips are so welcome, I would like it too much. Feel free to comment to correct me. Thank you for reading.
