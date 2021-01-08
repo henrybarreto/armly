@@ -1,14 +1,17 @@
 //use std::{fs::File, net::{Shutdown, TcpStream}, thread, time::Duration};
 //use std::io::{Read, Write};
-use std::fs::File;
-use daemonize::Daemonize;
-use soldier::soldier::Soldier;
+//use std::{fs::File, io::Read, thread, time};
+//use daemonize::Daemonize;
+//use soldier::soldier::Soldier;
 //use walkietalkie::walkietalkie::{Command, Response, Soldier};
 
-mod soldier;
+//use log::info;
+use simple_logger::SimpleLogger;
+use walkietalkie::{self, soldier::soldier};
 
 fn main() {
-let stdout = File::create("soldier.out").unwrap();
+SimpleLogger::new().init().unwrap();
+/*let stdout = File::create("soldier.out").unwrap();
 let stderr = File::create("soldier.err").unwrap();
 
 let daemonize = Daemonize::new()
@@ -25,12 +28,17 @@ let daemonize = Daemonize::new()
 
 match daemonize.start() {
   Ok(_) => {
-    let mut tcp_stream = Soldier::connect("127.0.0.1:14114".to_string());
-    let commands_recieved = Soldier::receive_commands(&mut tcp_stream);
-    let commands_output = Soldier::run_commands(commands_recieved);
-    let _bytes_sent = Soldier::send_output(&mut tcp_stream, commands_output);
-    Soldier::desconnect(&mut tcp_stream);
+    loop {*/
+      let config = soldier::Soldier::config();
+      let tcp_stream = walkietalkie::walkietalkie::Soldier::connect(config.addr.clone());
+      let commands_recieved = walkietalkie::walkietalkie::Soldier::receive_commands(&tcp_stream).unwrap();
+      let commands_output = soldier::Soldier::run_commands(commands_recieved);
+      let _bytes_sent = walkietalkie::walkietalkie::Soldier::send_report(&tcp_stream, commands_output).unwrap();
+      walkietalkie::walkietalkie::Soldier::desconnect(&tcp_stream);
+      /*
+      thread::sleep(time::Duration::from_secs(config.interval));
+    }
   },
   Err(e) => eprintln!("Error, {}", e),
-  }
+  }*/
 }
