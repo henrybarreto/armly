@@ -7,7 +7,7 @@
 
 //use log::info;
 use simple_logger::SimpleLogger;
-use walkietalkie::{self, soldier::soldier};
+use walkietalkie::{self, soldier};
 
 fn main() {
 SimpleLogger::new().init().unwrap();

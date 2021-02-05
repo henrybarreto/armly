@@ -4,7 +4,7 @@ pub mod commander;
 pub mod walkietalkie {
   use std::{error::Error, io::{Read, Write}, net::{Shutdown, TcpListener, TcpStream}, process, sync::mpsc::{Receiver, Sender, channel}};
   use log::{error, info};
-  use crate::commander::commander::CommanderConfig;
+  use crate::commander::CommanderConfig;
 
   use serde::{Serialize, Deserialize};
   #[derive(Serialize, Deserialize, Clone, Debug)]

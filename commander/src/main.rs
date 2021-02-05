@@ -2,7 +2,7 @@ use std::{error::Error, net::{Shutdown}, sync::{Arc, Mutex}, thread};
 use log::{info};
 use simple_logger::SimpleLogger;
 
-use walkietalkie::{self, commander::commander};
+use walkietalkie::{self, commander};
 
 fn main() -> Result<(), Box<dyn Error>> {
   SimpleLogger::new().init().unwrap();
