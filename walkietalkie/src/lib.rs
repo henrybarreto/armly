@@ -5,15 +5,8 @@ pub mod walkietalkie {
   use std::{error::Error, io::{Read, Write}, net::{Shutdown, TcpListener, TcpStream}, process, sync::mpsc::{Receiver, Sender, channel}};
   use log::{error, info};
   use crate::commander::commander::CommanderConfig;
-  //use crate::soldier::soldier::SoldierConfig;
 
   use serde::{Serialize, Deserialize};
-  /*#[derive(Deserialize, Clone, Debug)]
-  pub struct Config {
-    pub name: String,
-    pub addr: String,
-    pub commands: Vec<Command>,
-  }*/
   #[derive(Serialize, Deserialize, Clone, Debug)]
   pub struct Report {
     pub status: i32,
@@ -33,13 +26,6 @@ pub mod walkietalkie {
     fn from_vec_to_bytes(communication: Vec<Self>) -> Result<Vec<u8>, Box<dyn Error>> where Self: Sized;
   }
   impl Report {
-    /*fn new(status: i32, stdout: Vec<u8>, stderr: Vec<u8>) -> Self {
-      Report {
-        status,
-        stdout,
-        stderr
-      }
-    }*/
   }
   impl Communication for Report {
     fn from_bytes(bytes: Vec<u8>) -> Result<Report, Box<dyn Error>> {
@@ -66,7 +52,6 @@ pub mod walkietalkie {
       }
     }
     fn from_bytes_to_vec(bytes: Vec<u8>) -> Result<Vec<Report>, Box<dyn Error>> {
-      //println!("from_bytes_to_vec Report{:?}", bytes);
       match bincode::deserialize(&bytes) {
         Ok(reports) => { 
           let reports: Vec<Report> = reports;
@@ -79,7 +64,6 @@ pub mod walkietalkie {
       }
     }
     fn from_vec_to_bytes(reports: Vec<Report>) -> Result<Vec<u8>, Box<dyn Error>> {
-      //println!("from_vec_to_bytes Report{:?}", reports);
       match bincode::serialize(&reports) {
         Ok(bytes) => { 
           let bytes: Vec<u8> = bytes;
@@ -93,12 +77,6 @@ pub mod walkietalkie {
     }
   }
   impl Command {
-    /*fn new(name: String, args: Vec<String>) -> Self {
-      Command {
-        name,
-        args
-      }
-    }*/
   }
 
   impl Communication for Command {
@@ -126,7 +104,6 @@ pub mod walkietalkie {
       }
     }
     fn from_bytes_to_vec(bytes: Vec<u8>) -> Result<Vec<Command>, Box<dyn Error>> {
-      //println!("from_bytes_to_vec Command{:?}", bytes);
       match bincode::deserialize(&bytes) {
         Ok(commands) => { 
           let commands: Vec<Command> = commands;
@@ -140,7 +117,6 @@ pub mod walkietalkie {
     }
 
     fn from_vec_to_bytes(commands: Vec<Command>) -> Result<Vec<u8>, Box<dyn Error>> {
-      //println!("from_vec_to_bytes Command{:?}", commands);
       match bincode::serialize(&commands) {
         Ok(bytes) => { 
           let bytes: Vec<u8> = bytes;
@@ -195,7 +171,6 @@ pub mod walkietalkie {
       info!("Trying to read from the stream");
       match tcp_stream.read(&mut buf) {
         Ok(_buf_read) => {
-            //info!("{}", buf_read);
             info!("Trying to deserialize the commands");
             match Command::from_bytes_to_vec(buf.to_vec()) {
               Ok(list_commands) => {
