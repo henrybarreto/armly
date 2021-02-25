@@ -1,12 +1,16 @@
-use std::{error::Error, net::{Shutdown}, sync::{Arc, Mutex}, thread};
+use std::{error::Error, net::{Shutdown}, sync::{Arc, Mutex}};
 use log::{info};
 use simple_logger::SimpleLogger;
+
+mod thread_pool;
 
 use walkietalkie::commander;
 
 fn main() -> Result<(), Box<dyn Error>> {
   SimpleLogger::new().init().unwrap();
-  
+
+  let thread_pool = thread_pool::ThreadPool::new(4);
+
   let config: commander::CommanderConfig = commander::Commander::config();
 
   let commands: Vec<walkietalkie::walkietalkie::Command> = config.commands.clone(); //commands_defined();
@@ -24,7 +28,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         let commands_clone = Arc::new(Mutex::new(commands.clone()));
         let commander_clone = Arc::new(Mutex::new(commander.clone()));
         info!("Opening a thread...");
-        if let Err(_error) = thread::spawn(move || {
+        thread_pool.execute(move || {
           let _commander_from_thread = commander_clone.lock().expect("Could not lock commander");
           let commands_from_thread = commands_clone.lock().expect("Could not lock commands");
           info!("Sending orders..");
@@ -35,10 +39,7 @@ fn main() -> Result<(), Box<dyn Error>> {
           commander_channel_send.send(reports).unwrap();
           info!("Desconnecting from a client..");
           tcp_stream.shutdown(Shutdown::Both).unwrap();
-        }).join() {
-          break;
-        };
-        
+        });
         let reports = commander_channel_recv.recv().unwrap();
         info!("Showing reports from the client...");
         for report in reports.iter() {
