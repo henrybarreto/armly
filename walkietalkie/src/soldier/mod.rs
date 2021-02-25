@@ -1,16 +1,15 @@
+pub mod report;
+pub mod soldier_config;
+
 use std::{fs::File, path::Path};
 use log::{info, warn};
-use crate::walkietalkie::{Command, Report};
-use serde::{Deserialize};
 
-#[derive(Deserialize, Clone, Debug)]
-pub struct SoldierConfig {
-  pub name: String,
-  pub addr: String,
-  pub interval: u64
-}
+use report::Report;
+use soldier_config::SoldierConfig;
+use crate::commander::command::Command;
+
+
 pub struct Soldier;
-
 impl Soldier {
   pub fn config() -> SoldierConfig {
     let config_file = if let Ok(config_file) = File::open(Path::new("config.ron")) {
