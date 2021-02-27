@@ -1,4 +1,4 @@
-use std::sync::{mpsc, Mutex, Arc};
+use std::sync::{mpsc, Arc, Mutex};
 use std::thread;
 
 type Job = Box<dyn FnOnce() + Send + 'static>;
@@ -10,7 +10,11 @@ pub struct Worker {
 impl Worker {
     pub fn new(id: usize, receiver: Arc<Mutex<mpsc::Receiver<Job>>>) -> Worker {
         let thread = thread::spawn(move || loop {
-            let job = receiver.lock().expect("Could not lock").recv().expect("Could not get the Job");
+            let job = receiver
+                .lock()
+                .expect("Could not lock")
+                .recv()
+                .expect("Could not get the Job");
 
             job();
         });
@@ -33,17 +37,16 @@ impl ThreadPool {
         for id in 0..size {
             workers.push(Worker::new(id, Arc::clone(&receiver)));
         }
-        ThreadPool {
-            workers,
-            sender
-        }
+        ThreadPool { workers, sender }
     }
     pub fn execute<F>(&self, f: F)
-        where
-            F: FnOnce() + Send + 'static,
+    where
+        F: FnOnce() + Send + 'static,
     {
         let job = Box::new(f);
 
-        self.sender.send(job).expect("Could send the job through the sender");
+        self.sender
+            .send(job)
+            .expect("Could send the job through the sender");
     }
 }

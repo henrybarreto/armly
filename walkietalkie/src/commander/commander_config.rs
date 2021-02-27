@@ -3,7 +3,7 @@ use serde::Deserialize;
 
 #[derive(Deserialize, Clone, Debug)]
 pub struct CommanderConfig {
-  pub name: String,
-  pub addr: String,
-  pub commands: Vec<Command>,
+    pub name: String,
+    pub addr: String,
+    pub commands: Vec<Command>,
 }
