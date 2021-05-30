@@ -15,4 +15,4 @@ log = "0.4.11"
 simple_logger = "1.11.0"
 
 [dependencies.walkietalkie]
-path = "../walkietalkie"
+walkietalkie = { git = "https://github.com/henrybarreto/walkietalkie", branch = "master" }
