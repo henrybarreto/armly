@@ -1,3 +1,7 @@
+THIS PROJECTS BECOME TO Walkietalkie.
+
+github.com/henrybarreto/walkietalkie/
+
 ## What is it?
 
 Armly is a combination of a Soldiers (Clients) and Commanders(Server). Each Commander has a list of Commands, which it sends to its Soldiers, what it can have many simultaneously. The Soldiers follow to the Commander's commands orders and, when all orders have been run, it waits a time interval and ask again to the Commander for new on ones.
